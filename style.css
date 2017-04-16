@@ -1,6 +1,10 @@
 body {
 	margin: 0px;
 }
+
+.clr {
+	clear: left; clear: right;
+}
 .selected {
 	background-color: #04A0D2 !important;
 }
@@ -65,4 +69,56 @@ body {
 
 .post_content {
 	clear: left;
+}
+
+.postExpanded {
+	padding: 10px;
+}
+
+.postExpanded_title {
+	font-size: 28px;
+	color: #02B3E2;
+	float: left;
+}
+
+.postExpanded_userDetails {
+	float: right;
+}
+
+.postExpanded_name {
+	font-size: 18px;
+}
+
+.postExpanded_city {
+	font-size: 12px;
+}
+
+.postExpanded_content {
+	padding: 10px 0; color: #ADADAD;
+}
+
+.postExpanded_commentsBlock {
+	margin: 10px 0; border-top: 1px solid #ADADAD;
+	padding: 10px 0;
+}
+
+.postExpanded_commentsBlock_name {
+	color: #4A4A4A; float: left;
+	margin-right: 10px;
+}
+
+.postExpanded_commentsBlock_body {
+	color: #7B809A;
+}
+
+.btn-postExpanded_displayToggle {
+	border: 1px solid #ADADAD; float: right;
+    border-radius: 5px; color: #636363;
+    padding: 5px; cursor: pointer;
+    display: inline-block; font-size: 14px;
+    width: 100px; text-align: center;
+}
+
+.btn-postExpanded_displayToggle:hover {
+    color: #fff; background-color: #636363;
 }

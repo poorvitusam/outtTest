@@ -62,8 +62,8 @@
 				        data: "{}",
 				        dataType: "json",
 				        success: function (data) {
-				        	var innerHTML = '<div>Here</div>';
-				        	$page.find(".js-page-container").html(innerHTML);
+				        	var innerHTML = '<div class="postExpanded js-postExpanded"><div class="postExpanded_title">' + data.name +'</div><div class="postexpanded_userDetails"> <div class="postExpanded_name">' +data.username + '</div><div class="postExpanded_city">' + data.address.city + '</div> </div><div class="clr"></div><div class="postExpanded_content">body</div><div class="btn-postExpanded_displayToggle js-btn-commentsToggle">Show Comments</div><div class="clr"></div><div class="postExpanded_commentsBlock js-commentsBlock hide"><div class="postExpanded_commentsBlock_name">' + data.company.name + ': </div><div class="postExpanded_commentsBlock_body">' + data.company.catchPhrase +'</div></div><div class="clr"></div></div>'
+				        	$page.find(".js-page-container").find(".js-home-page").html(innerHTML);
 				        
 				        },
 				        error: function (msg) {
@@ -74,9 +74,13 @@
 				});
 
 				$page.find(".js-nav-main").on('click', '.js-options', function() {
+					//Handle nav bar
 					$page.find(".js-nav-main").find(".js-options").removeClass("selected");
 					$(this).addClass("selected");
-					var option_num = $(this).attr("data-navOptions");
+
+					var option_num = $(this).attr("data-navOptions");//Store the page to be viewed
+
+					//Handle the body as per the nav bar
 					$page.find(".js-page-container").children().addClass("hide");
 					$page.find(".js-page-container").children().each(function() {
 						$item = $(this);
@@ -84,11 +88,14 @@
 							$item.removeClass("hide");
 						}
 					});
-					// var $body_container = $page.find(".js-page-container").children().attr("data-content",option_num);
-					// console.log($body_container);
-					// $page.find(".js-page-container").children().addClass("hide");
-					// $body_container.removeClass("hide");
 				});
+
+				$page.find('.js-page-container').find('.js-home-page').on('click', '.js-btn-commentsToggle', function () {
+					$(this).text(function(i, text){
+			          return text === "Show Comments" ? "Hide Comments" : "Show Comments";
+			      })
+					$page.find(".js-postExpanded").find(".js-commentsBlock").slideToggle();	
+				})
 			})
 		</script>
 	</body>
