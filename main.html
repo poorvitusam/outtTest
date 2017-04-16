@@ -6,11 +6,14 @@
 	<body>
 		<div class="pg-container js-page">
 			<div class="nav-main js-nav-main">
-				<div class="nav_options js-options">About Us</div>
-				<div class="nav_options js-options selected">Home</div>
+				<div class="nav_options js-options" data-navOptions="2">About Us</div>
+				<div class="nav_options js-options selected" data-navOptions="1">Home</div>
 			</div>
 			<div class="js-page-container">
-				<div class="container js-home-page"></div>
+				<div class="container js-home-page" data-content="1"></div>
+				<div class="hide js-aboutUs" data-content="2">
+					HII
+				</div>
 			</div>
 		</div>
 		
@@ -70,7 +73,22 @@
 				    });
 				});
 
-				$page.find()
+				$page.find(".js-nav-main").on('click', '.js-options', function() {
+					$page.find(".js-nav-main").find(".js-options").removeClass("selected");
+					$(this).addClass("selected");
+					var option_num = $(this).attr("data-navOptions");
+					$page.find(".js-page-container").children().addClass("hide");
+					$page.find(".js-page-container").children().each(function() {
+						$item = $(this);
+						if($item.attr("data-content") == option_num) {
+							$item.removeClass("hide");
+						}
+					});
+					// var $body_container = $page.find(".js-page-container").children().attr("data-content",option_num);
+					// console.log($body_container);
+					// $page.find(".js-page-container").children().addClass("hide");
+					// $body_container.removeClass("hide");
+				});
 			})
 		</script>
 	</body>

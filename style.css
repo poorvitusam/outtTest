@@ -4,6 +4,10 @@ body {
 .selected {
 	background-color: #04A0D2 !important;
 }
+
+.hide {
+	display: none;
+}
 .nav-main {
 	background-color: #02B3E2;
 	height: 40px;
