@@ -9,8 +9,39 @@ body {
 	background-color: #04A0D2 !important;
 }
 
+.p-100 {
+	padding: 100px;
+}
+
+.f-40 {
+	font-size: 40px;
+}
+
+.ta {
+	text-align: center;
+}
+
 .hide {
 	display: none;
+}
+
+@media only screen 
+  and (min-device-width: 300px) 
+  and (max-device-width: 667px) 
+  and (-webkit-min-device-pixel-ratio: 2) {
+	  .nav_options {
+		width: 100%; text-align: center;
+	}
+
+	.nav-main {
+		display: none;
+	}
+	.nav-logo {
+		display: block;
+		font-size: 40px; line-height: 40px;
+		background-color: #02B3E2; padding: 5px;
+		width: 100%; text-align: right;
+	}
 }
 .nav-main {
 	background-color: #02B3E2;
