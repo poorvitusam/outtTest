@@ -44,9 +44,7 @@
 
 			$(document).ready(function(){
 				var $page = $(".js-page");
-				var post_list = {};
 				//Call for dynamically loading home page
-			    // function loadHome
 			    $.ajax({
 			        type: "GET",
 			        url: 'https://jsonplaceholder.typicode.com/posts',
@@ -115,12 +113,6 @@
 				})();
 
 
-			 //    $page.find(".js-post").hover(function() {
-				//   $(this).find(".js-close").fadeIn( 100 );
-				// });
-
-				
-
 			    $page.find('.js-home-page').on('click','.js-post',function(){
 				    var id = $(this).attr("data-id");
 				    var title = $(this).find(".js-title").text();
@@ -133,7 +125,7 @@
 				        data: "{}",
 				        dataType: "json",
 				        success: function (data) {
-				        	var innerHTML = '<div class="postExpanded js-postExpanded"><div class="postExpanded_title">' + title +'</div><div class="postexpanded_userDetails"> <div class="postExpanded_name">' +data.name + '</div><div class="postExpanded_city">' + data.address.city + '</div> </div><div class="clr"></div><div class="postExpanded_content">' + body + '</div><div class="btn-postExpanded_displayToggle js-btn-commentsToggle">Show Comments</div><div class="clr"></div><div class="postExpanded_commentsBlock js-commentsBlock hide"><div class="postExpanded_commentsBlock_name">' + data.company.name + ': </div><div class="postExpanded_commentsBlock_body">' + data.company.catchPhrase +'</div></div><div class="clr"></div></div>'
+				        	var innerHTML = '<div class="postExpanded js-postExpanded" data-id="' + id + '"><div class="postExpanded_title">' + title +'</div><div class="postexpanded_userDetails"> <div class="postExpanded_name">' +data.name + '</div><div class="postExpanded_city">' + data.address.city + '</div> </div><div class="clr"></div><div class="postExpanded_content">' + body + '</div><div class="btn-postExpanded_displayToggle js-btn-commentsToggle">Show Comments</div><div class="clr"></div><div class="js-commentsBlock hide"></div><div class="clr"></div></div>'
 				        	$page.find(".js-page-container").find(".js-home-page").html(innerHTML);
 				        
 				        },
@@ -162,9 +154,30 @@
 				});
 
 				$page.find('.js-page-container').find('.js-home-page').on('click', '.js-btn-commentsToggle', function () {
+					var id = $(this).closest(".js-postExpanded").attr("data-id");
+					var url = 'https://jsonplaceholder.typicode.com/comments?postId='+id;
+					$.ajax({
+				        type: "GET",
+				        url: url,
+				        data: "",
+				        dataType: "json",
+				        success: function (data) {
+				        	var innerHTML = "";
+				        	$.each(data, function(i, item) {
+						    	innerHTML += '<div class="postExpanded_commentsBlock "><div class="postExpanded_commentsBlock_name">' + data[i].name + ': </div><div class="postExpanded_commentsBlock_body">' + data[i].body +'</div></div>';
+							});
+
+				        	$page.find(".js-page-container").find(".js-home-page").find(".js-commentsBlock").html(innerHTML);
+				        
+				        },
+				        error: function (msg) {
+				            
+				            alert(msg.responseText);
+				        }
+				    });
 					$(this).text(function(i, text){
-			          return text === "Show Comments" ? "Hide Comments" : "Show Comments";
-			      })
+						return text === "Show Comments" ? "Hide Comments" : "Show Comments";
+					})
 					$page.find(".js-postExpanded").find(".js-commentsBlock").slideToggle();	
 				})
 
@@ -174,24 +187,6 @@
 				  autoplay: true,
 				  autoplaySpeed: 500,
 				  fade: true,
-				 //  responsive: [{
-					// breakpoint: 1024,
-					// settings: {
-					// 	slidesToShow: 3,
-					// 	slidesToScroll: 3,
-					// 	infinite: true,
-					// 	dots: true
-					// }},{
-					// breakpoint: 600,
-					// settings: {
-					// 	slidesToShow: 2,
-					// 	slidesToScroll: 2
-					// 	}},{
-					// breakpoint: 480,
-					// settings: {
-					// 		slidesToShow: 1,
-					// 		slidesToScroll: 1
-					// 	}}]
 				});
 			})
 		</script>
