@@ -1,7 +1,10 @@
 <html>
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css">
-		<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+  		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  		<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+  		<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+  		<script type="text/javascript" src="slick/slick.min.js"></script>
 	</head>
 	<body>
 		<div class="pg-container js-page">
@@ -10,9 +13,20 @@
 				<div class="nav_options js-options selected" data-navOptions="1">Home</div>
 			</div>
 			<div class="js-page-container">
-				<div class="container js-home-page" data-content="1"></div>
-				<div class="hide js-aboutUs" data-content="2">
-					HII
+				<div class="container hide js-home-page" data-content="1"></div>
+				<div class="js-aboutUs" data-content="2">
+					<div class="slider js-slides">
+<!-- 
+						<img src="http://placehold.it/940x528">
+						<img src="http://placehold.it/940x528">
+						<img src="http://placehold.it/940x528">
+						<img src="http://placehold.it/940x528">
+						<img src="http://placehold.it/940x528">
+ -->					<div class="slider_slide slider_slide-blue"></div>
+						<div class="slider_slide slider_slide-red"></div>
+						<div class="slider_slide slider_slide-yellow"></div>
+						<div class="slider_slide slider_slide-green"></div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -96,6 +110,22 @@
 			      })
 					$page.find(".js-postExpanded").find(".js-commentsBlock").slideToggle();	
 				})
+
+				// $page.find(".js-aboutUs").find(".js-slides").slidesjs({
+				// 	width: 940,
+				// 	height: 528,
+				// 	navigation: {
+	   //    				active: true,
+	   //      			effect: "slide"
+    // 				}
+				// });
+
+				$page.find(".js-aboutUs").find(".js-slides").slick({
+				  slidesToShow: 3,
+				  slidesToScroll: 1,
+				  autoplay: true,
+				  autoplaySpeed: 500,
+				});
 			})
 		</script>
 	</body>

@@ -122,3 +122,24 @@ body {
 .btn-postExpanded_displayToggle:hover {
     color: #fff; background-color: #636363;
 }
+
+.slider {
+	display: none;
+}
+
+.slider_slide-blue {
+	background-color: #55BBEA;
+}
+
+.slider_slide-red {
+	background-color: #FF457A;
+}
+
+.slider_slide-yellow {
+	background-color: #FABC3D;
+}
+
+.slider_slide-green {
+	background-color: #55B982;
+}
+
