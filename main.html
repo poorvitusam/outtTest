@@ -5,31 +5,73 @@
 	</head>
 	<body>
 		<div class="pg-container js-page">
-			<div class="nav-main">
-				<div class="nav_options">About Us</div>
-				<div class="nav_options">Home</div>
+			<div class="nav-main js-nav-main">
+				<div class="nav_options js-options">About Us</div>
+				<div class="nav_options js-options selected">Home</div>
 			</div>
-			<div class="container">
-				<div class="post js-post">
-					<div class="post_title">sunt aut facere repellat provident occaecati excepturi optio reprehenderit</div>
-					<div class="post_close js-close">&times;</div>
-					<div class="post_content">quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto</div>
-				</div>
-				<div class="post js-post">
-					<div class="post_title">sunt aut facere repellat provident occaecati excepturi optio reprehenderit</div>
-					<div class="post_close js-close">&times;</div>
-					<div class="post_content">quia et suscipit suscipit recusandae consequuntur expedita et cum reprehenderit molestiae ut ut quas totam nostrum rerum est autem sunt rem eveniet architecto</div>
-				</div>
+			<div class="js-page-container">
+				<div class="container js-home-page"></div>
 			</div>
-
 		</div>
+		
 		<script type="text/javascript">
-			//JavaScript goes here
-			$(".js-page").find(".js-close").click(function(){
-			    $(this).closest(".js-post").remove();
-			});
 
-			// $(".js-close").click();
+			//JavaScript goes here
+
+			$(document).ready(function(){
+				var $page = $(".js-page");
+
+				//Call for dynamically loading home page
+			    $.ajax({
+			        type: "GET",
+			        url: 'https://jsonplaceholder.typicode.com/posts',
+			        data: "{}",
+			        dataType: "json",
+			        success: function (data) {
+			            
+				        var innerHTML = '';
+				        
+				        $.each(data, function(i, item) {
+						    innerHTML += '<div class="post js-post" data-id="' + data[i].userId + '"> <div class="post_title">' + data[i].title + '</div><div class="post_close js-close">&times;</div><div class="post_content">' + data[i].body + '</div></div>';
+						});
+			        
+			        	$page.find(".js-home-page").append(innerHTML);
+			        
+			        },
+			        error: function (msg) {
+			            
+			            alert(msg.responseText);
+			        }
+			    });
+
+
+			    $page.find('.js-home-page').on('click','.js-close',function(){
+				    $(this).closest(".js-post").remove();
+				});
+
+
+			    $page.find('.js-home-page').on('click','.js-post',function(){
+				    var id = $(this).attr("data-id");
+					var url = 'https://jsonplaceholder.typicode.com/users/' + id;
+				    $.ajax({
+				        type: "GET",
+				        url: url,
+				        data: "{}",
+				        dataType: "json",
+				        success: function (data) {
+				        	var innerHTML = '<div>Here</div>';
+				        	$page.find(".js-page-container").html(innerHTML);
+				        
+				        },
+				        error: function (msg) {
+				            
+				            alert(msg.responseText);
+				        }
+				    });
+				});
+
+				$page.find()
+			})
 		</script>
 	</body>
 </html>

@@ -1,6 +1,9 @@
 body {
 	margin: 0px;
 }
+.selected {
+	background-color: #04A0D2 !important;
+}
 .nav-main {
 	background-color: #02B3E2;
 	height: 40px;
@@ -9,9 +12,14 @@ body {
 .nav_options {
 	float: right;
 	font-size: 18px;
-	margin: 0 10px;
+	padding: 0 10px;
 	color: #fff;
 	line-height: 40px;
+	cursor: pointer;
+}
+
+.nav_options:hover {
+	color: #F4F4F4;
 }
 
 .container {
@@ -21,7 +29,7 @@ body {
 }
 
 .post {
-	padding: 5px; 
+	padding: 10px; 
 	border-bottom: 1px solid #ADADB2;
 }
 
@@ -35,18 +43,20 @@ body {
 	float: left;
 }
 
+.post:hover {
+	background-color: #F4F4F4;
+}
+
 .post_close {
 	float: right;
     color: #ADADAD;
     /*height: 20px;
     width: 20px;*/
-    padding: 5px;
     cursor: pointer;
 }
 
 .post_close:hover {
-	background-color: #F4F4F4;
-	border-radius: 5px; text-align: center; 
+	color: #737373; z-index: 1;
 }
 
 .post_content {
