@@ -46,6 +46,7 @@
 				var $page = $(".js-page");
 				var post_list = {};
 				//Call for dynamically loading home page
+			    // function loadHome
 			    $.ajax({
 			        type: "GET",
 			        url: 'https://jsonplaceholder.typicode.com/posts',
@@ -94,10 +95,24 @@
 			    });
 
 
-			    $page.find('.js-home-page').on('click','.js-close',function(){
+			    $page.find('.js-home-page').on('click','.js-close',function(event){
+			    	event.stopPropagation();
+
 				    $(this).closest(".js-post").remove();
 				});
 
+			    (function poll() {
+				   setTimeout(function() {
+				       $.ajax({ url: 'https://jsonplaceholder.typicode.com/posts', success: function(data) {
+				            var innerHTML = '';
+					        $.each(data, function(i, item) {
+							    innerHTML += '<div class="post js-post" data-id="' + data[i].id + '"> <div class="post_title js-title">' + data[i].title + '</div><div class="post_close js-close">&times;</div><div class="post_content js-body">' + data[i].body + '</div></div>';
+							});
+				        
+				        	$page.find(".js-home-page").append(innerHTML);
+				       }, dataType: "json", complete: poll });
+				    }, 30000);
+				})();
 
 
 			 //    $page.find(".js-post").hover(function() {
