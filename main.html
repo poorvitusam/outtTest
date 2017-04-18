@@ -2,43 +2,53 @@
 	<head>
 		<link rel="stylesheet" type="text/css" href="style.css">
   		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-  		<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
-  		<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
-  		<script type="text/javascript" src="slick/slick.min.js"></script>
+  		<link rel="stylesheet" href="owlcarousel/owl.carousel.min.css">
+		<link rel="stylesheet" href="owlcarousel/owl.theme.default.min.css">
+		<script src="owlcarousel/owl.carousel.min.js"></script>
+  		<!-- <script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.core.js"></script>
+		<script src="http://jquery-ui.googlecode.com/svn/tags/latest/ui/jquery.effects.slide.js"></script> -->
+  		
+  		<!-- <link rel="stylesheet" type="text/css" href="unslider.css"/>
+  		<link rel="stylesheet" type="text/css" href="unslider-dots.css"/> -->
+  		<!-- <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/> -->
+  		
 	</head>
 	<body>
 		<div class="pg-container js-page">
 			<div class="nav-logo hide js-nav-logo">&#9776</div>
 			<div class="nav-main js-nav-main">
-				<div class="nav_options js-options" data-navOptions="2">About Us</div>
 				<div class="nav_options js-options selected" data-navOptions="1">Home</div>
+				<div class="nav_options js-options" data-navOptions="2">About Us</div>
 			</div>
 
 			<div class="js-page-container">
-				<div class="container  js-home-page" data-content="1"></div>
-				<div class="hide js-aboutUs" data-content="2">
-					<div class="preloader"></div>
-					<div class="slider js-slides">
- 						<div class="slider_slide slider_slide-blue js-slide">
- 							<div class="slider_slide_title js-title"></div>
- 							<div class="slider_slide_author js-author"></div>
- 						</div>
-						<div class="slider_slide slider_slide-red js-slide">
-							<div class="slider_slide_title js-title"></div>
- 							<div class="slider_slide_author js-author"></div>
-						</div>
-						<div class="slider_slide slider_slide slider_slide-yellow js-slide">
-							<div class="slider_slide_title js-title"></div>
- 							<div class="slider_slide_author js-author"></div>
-						</div>
-						<div class="slider_slide slider_slide slider_slide-green js-slide">
-							<div class="slider_slide_title js-title"></div>
- 							<div class="slider_slide_author js-author"></div>
-						</div>
+				<div class="container hide  js-home-page" data-content="1"></div>
+				<div class="  js-aboutUs" data-content="2">
+					<div class="owl-carousel owl-theme js-slides">
+						<!-- <div class="slider_slide_prev js-prev"><</div> -->
+	  						
+	 						<div class="slider_slide slider_slide-blue js-slide">
+	 							<div class="slider_slide_title js-title"></div>
+	 							<div class="slider_slide_author js-author"></div>
+	 						</div>
+							<div class="slider_slide slider_slide-red js-slide">
+								<div class="slider_slide_title js-title"></div>
+	 							<div class="slider_slide_author js-author"></div>
+							</div>
+							<div class="slider_slide slider_slide-yellow js-slide">
+								<div class="slider_slide_title js-title"></div>
+	 							<div class="slider_slide_author js-author"></div>
+							</div>
+							<div class="slider_slide slider_slide-green js-slide">
+								<div class="slider_slide_title js-title"></div>
+	 							<div class="slider_slide_author js-author"></div>
+							</div>
+						<!-- <div class="slider_slide_next js-next">></div> -->
 					</div>
 				</div>
 			</div>
 		</div>
+		<!-- <script type="text/javascript" src="unslider.js"></script> -->
 		<script type="text/javascript" src="index.js"></script>
 	</body>
 </html>

@@ -1,6 +1,7 @@
 $(document).ready(function(){
 	var $page = $(".js-page");
 	//Call for dynamically loading home page
+	
     $.ajax({
         type: "GET",
         url: 'https://jsonplaceholder.typicode.com/posts',
@@ -19,7 +20,7 @@ $(document).ready(function(){
         	$page.find(".js-page-container").find(".js-slides").find(".js-slide").each(function(i,ele) {
 
 				var $this = $(ele);
-				if($this.find(".js-title").text()=="") {
+				// if($this.find(".js-title").text()=="") {
 					
 					var entry = data[Math.floor(Math.random()*data.length)];
 					$this.find(".js-title").text(entry.title);
@@ -37,7 +38,7 @@ $(document).ready(function(){
 				            alert(entry.id);
 				        }
 				    });
-				 }
+				 // }
 			});
         	$page.find('.preloader').fadeOut('slow',function(){$(this).remove();});
 			
@@ -134,54 +135,29 @@ $(document).ready(function(){
 		$page.find(".js-postExpanded").find(".js-commentsBlock").slideToggle();	
 	})
 
-	$page.find(".js-aboutUs").find(".js-slides").slick({
-	  slidesToShow: 1,
-	  slidesToScroll: 1,
-	  autoplay: true,
-	  autoplaySpeed: 500,
-	  fade: true,
-	  // responsive: [
-	  //   {
-	  //     breakpoint: 720,
-	  //     settings: {
-	  //       slidesToShow: 3,
-	  //       slidesToScroll: 3,
-	  //       infinite: true,
-	  //       dots: true
-	  //     }
-	  //   },
-	  //   {
-	  //     breakpoint: 520,
-	  //     settings: {
-	  //       slidesToShow: 2,
-	  //       slidesToScroll: 2
-	  //     }
-	  //   },
-	  //   {
-	  //     breakpoint: 320,
-	  //     settings: {
-	  //       slidesToShow: 1,
-	  //       slidesToScroll: 1
-	  //     }
-	  //   }
-	  //   // You can unslick at a given breakpoint now by adding:
-	  //   // settings: "unslick"
-	  //   // instead of a settings object
-	  // ]
-	});
-
-	//Responsive js
-
-	$page.find(".js-nav-logo").click(function(){
-		$page.find(".js-nav-main").slideDown();
-		$(".js-nav-main").addClass("open");
-		$(this).hide();
-	});
-
-	$page.find(".js-nav-main").click(function(){
-		if($page.find(".js-nav-main").hasClass("open")) {
-			$page.find(".js-nav-main").hide();
-			$page.find(".js-nav-logo").show();
-		}
+	
+	$page.find(".owl-carousel").owlCarousel({
+		autoplay:true,
+		autoplayTimeout:500,
+		autoplayHoverPause:true,
+		center: true,
+	    items:1,
+	    loop:true,
+	    margin:10,
+	    0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1000:{
+            items:5,
+            nav:true,
+            loop:false
+        }
 	});
 })
+
+
