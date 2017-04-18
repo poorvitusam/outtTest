@@ -2,7 +2,7 @@ $(document).ready(function(){
 	var $page = $(".js-page");
 	
 	init();
-	
+
 	function init() {
 		loadPost();
 		deletePost();
@@ -11,6 +11,7 @@ $(document).ready(function(){
 		handleNavSelect();
 		getComments();
 		carousel();
+		handleMobieNav();
 	}
 
 	//Call for dynamically loading home page
@@ -181,6 +182,23 @@ $(document).ready(function(){
 	            nav:true,
 	            loop:false
 	        }
+		});
+	}
+
+	function handleMobieNav() {
+		//Responsive js
+
+		$page.find(".js-nav-logo").click(function(){
+			$page.find(".js-nav-main").slideDown();
+			$(".js-nav-main").addClass("open");
+			$(this).hide();
+		});
+
+		$page.find(".js-nav-main").click(function(){
+			if($page.find(".js-nav-main").hasClass("open")) {
+				$page.find(".js-nav-main").hide();
+				$page.find(".js-nav-logo").show();
+			}
 		});
 	}
 })
