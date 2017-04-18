@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	var $page = $(".js-page");
 	//Call for dynamically loading home page
-	
+
     $.ajax({
         type: "GET",
         url: 'https://jsonplaceholder.typicode.com/posts',
@@ -138,12 +138,13 @@ $(document).ready(function(){
 	
 	$page.find(".owl-carousel").owlCarousel({
 		autoplay:true,
-		autoplayTimeout:500,
+		autoplayTimeout:3000,
 		autoplayHoverPause:true,
 		center: true,
 	    items:1,
 	    loop:true,
-	    margin:10,
+	    lazyLoad:true,
+	    smartSpeed:450,
 	    0:{
             items:1,
             nav:true
